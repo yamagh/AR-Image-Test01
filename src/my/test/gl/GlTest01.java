@@ -25,7 +25,14 @@ public class GlTest01 implements AndGLView.IGLViewEventListener {
 	private GL10 _ref_gl;
 
 	// 頂点座標
-	private float apexs[] = new float[] { -20f, -20f, 20f, -40f,   -20f, 20f, 40f, 20f, };
+	private float apexs[] = new float[] {
+			//	  x    y   z
+				-50,   0, -50,
+				 50,   0, -50,
+				-50,   0,  50,
+				 50,   0,  50
+			};
+//	private float apexs[] = new float[] { -20f, -20f, 20f, -40f,   -20f, 20f, 40f, 20f, };
 //	private float apexs[] = new float[] { -1f, -1f, 1f, -1f, -1f, 1f, 1f, 1f, };
 
 	// 頂点座標バッファ
@@ -57,7 +64,7 @@ public class GlTest01 implements AndGLView.IGLViewEventListener {
 		// テクスチャ管理番号バインド
 		gl.glBindTexture(GL10.GL_TEXTURE_2D, textureId);
 
-		Bitmap bitmap = BitmapFactory.decodeResource(i_context.getResources(), R.drawable.dog);
+		Bitmap bitmap = BitmapFactory.decodeResource(i_context.getResources(), R.drawable.cat512);
 		Log.v(TAG, "" + bitmap.getHeight());
 		GLUtils.texImage2D(GL10.GL_TEXTURE_2D, 0, bitmap, 0);
 //		gl.glTexParameterf(GL10.GL_TEXTURE_2D, GL10.GL_TEXTURE_MIN_FILTER, GL10.GL_NEAREST);
@@ -75,7 +82,7 @@ public class GlTest01 implements AndGLView.IGLViewEventListener {
 //		GLU.gluLookAt(gl, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 		GLU.gluLookAt(gl, i_x, i_y, 3, i_x, i_y, 0, 0, 1, 0);
 		gl.glPushMatrix();
-		gl.glVertexPointer(2, GL10.GL_FLOAT, 0, apexBuff);
+		gl.glVertexPointer(3, GL10.GL_FLOAT, 0, apexBuff);
 
 		gl.glEnableClientState(GL10.GL_VERTEX_ARRAY);
 
